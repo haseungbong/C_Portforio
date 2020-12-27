@@ -8,8 +8,9 @@ int main()
 
 	auto unit = std::make_unique<Unit>();
 
-	auto newItem = ItemFactory::GetInstance().Create();
-	newItem->Display();
-	auto newItem1 = ItemFactory::GetInstance().Create();
-	newItem1->Display();
+	for (size_t i = 0; i < 10; ++i)
+	{
+		auto newItem = ItemFactory::GetInstance().Create();
+		newItem->Display();
+	}
 }
