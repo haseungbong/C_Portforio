@@ -16,6 +16,16 @@ public:
 		Neck = 6,
 		Max,
 	};
+
+	enum class Grade
+	{
+		None = 0,
+		Common, 
+		Uncommon,
+		Rare,
+		Unique,
+		Max,
+	};
 	
 	ItemBase() = delete;
 	ItemBase(EquipPos pos, int item_no, int offense, int defense)

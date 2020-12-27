@@ -1,23 +1,39 @@
 #pragma once
 #include <iostream>
 #include <atomic>
+#include <map>
 #include "ItemBase.h"
 #include "Singleton.h"
 
+struct ItemCreateArg
+{
+private:
+	const ItemBase::EquipPos pos;
+	const int uniqId;
+public:
+	ItemCreateArg(ItemBase::EquipPos pos, int seq)
+		: pos(pos), uniqId(seq)
+	{
+	}
+
+	ItemBase::EquipPos GetEqupPos() { return pos; }
+	int GetUniqId() { return uniqId; }
+};
+
 class IItemFactory
 {
+private:
+	virtual ItemBase::EquipPos EquipPos() = 0;
 public:
-	virtual ItemBase::EquipPos GetEquipPos() = 0;
-	virtual int GetOffensePower() = 0;
-	virtual int GetDefensePower() = 0;
+	virtual std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) = 0;
 };
 
 class ItemWeaponFactory : public IItemFactory
 {
+private:
+	ItemBase::EquipPos EquipPos() { return ItemBase::EquipPos::Weapon; }
 public:
-	ItemBase::EquipPos GetEquipPos() override;
-	int GetOffensePower() override;
-	int GetDefensePower() override;
+	std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) override;
 };
 
 class ItemFactory final : public Singleton<ItemFactory>
@@ -26,8 +42,11 @@ private:
 	std::atomic_int seq;
 
 	ItemBase::EquipPos GetRandomEquipPos();
+	using factoryMap = std::map<ItemBase::EquipPos, std::shared_ptr<IItemFactory>>;
+	std::shared_ptr<factoryMap> itemFactories;
 public:
-	ItemFactory() = default;
+	ItemFactory();
 	std::shared_ptr<ItemBase> Create();
 };
+
 
