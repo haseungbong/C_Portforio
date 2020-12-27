@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <atomic>
 #include "ItemBase.h"
+#include "Singleton.h"
 
 class IItemFactory
 {
@@ -18,11 +20,14 @@ public:
 	int GetDefensePower() override;
 };
 
-class ItemFactory
+class ItemFactory final : public Singleton<ItemFactory>
 {
 private:
-	int seq = 0;
+	std::atomic_int seq;
+
+	ItemBase::EquipPos GetRandomEquipPos();
 public:
-	static std::shared_ptr<ItemBase> Create();
+	ItemFactory() = default;
+	std::shared_ptr<ItemBase> Create();
 };
 

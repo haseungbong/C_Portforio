@@ -1,16 +1,18 @@
 #pragma once
-template<class T>
-class Singleton
-{
-public:
-	static T& instance();
-	Singleton(const Singleton&) = delete;//복사생성자
-	Singleton(Singleton&&) = delete;//이동생성자
-	Singleton& operator=(const Singleton&) = delete;
-	Singleton& operator=(Singleton&&) = delete;
 
-private:
-	Singleton() {}
-	~Singleton() {}
+template <typename T>
+class Singleton//Meyers Singletor
+{
+protected:
+    Singleton() = default;
+    ~Singleton() = default;
+    Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
+public:
+    static T& GetInstance()
+    {
+        static T instance;
+        return instance;
+    }
 };
 

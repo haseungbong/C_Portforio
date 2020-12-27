@@ -3,5 +3,5 @@
 
 void ItemBase::Display()
 {
-	std::cout << "No["<<itemNo<<"] OP["<<offensePower<<" DP["<<defensePower<<"]";
+	std::cout << "No["<<itemNo<<"] Equip["<< GetEquipPos()<<"] OP["<<offensePower<<"] DP["<<defensePower<<"]"<<std::endl;
 }
