@@ -46,6 +46,7 @@ private:
 	std::shared_ptr<factoryMap> itemFactories;
 public:
 	ItemFactory();
+	~ItemFactory();
 	std::shared_ptr<ItemBase> Create();
 };
 

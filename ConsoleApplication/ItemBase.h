@@ -35,10 +35,12 @@ public:
 		offensePower = offense;
 		defensePower = defense;
 	}
+	~ItemBase();
 
 	void Display() override;
 
 	EquipPos GetEquipPos() { return equipPos; }
+
 private:
 	EquipPos equipPos;
 	int itemNo;

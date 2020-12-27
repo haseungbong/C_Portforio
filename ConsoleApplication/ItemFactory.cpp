@@ -7,6 +7,11 @@ ItemFactory::ItemFactory()
 	itemFactories->insert(std::make_pair(ItemBase::EquipPos::Weapon, std::make_shared<ItemWeaponFactory>()));
 }
 
+ItemFactory::~ItemFactory()
+{
+	itemFactories->clear();
+}
+
 std::shared_ptr<ItemBase> ItemFactory::Create()
 {	
 	auto arg = ItemCreateArg(GetRandomEquipPos(), ++seq);
