@@ -1,0 +1,24 @@
+#-----------
+# vs layer
+#-----------
+.vs/
+Library/
+Temp/
+obj/
+Logs/
+*.user
+bin/
+_bin/
+_obj/
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.filters
+Debug/
+Release/
+#-----------
+# rider layer
+#-----------
+.idea/
+packages/
