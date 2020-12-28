@@ -6,9 +6,11 @@ class Singleton//Meyers Singletor
 protected:
     Singleton() = default;
     ~Singleton() = default;
+    
+public:
     Singleton(const Singleton&) = delete;
     Singleton& operator=(const Singleton&) = delete;
-public:
+	
     static T& GetInstance()
     {
         static T instance;
