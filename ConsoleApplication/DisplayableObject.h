@@ -2,6 +2,7 @@
 class DisplayableObject
 {
 public:
-	virtual void Display() = 0;
+	virtual ~DisplayableObject() = default;
+	virtual void Display() const = 0;
 };
 

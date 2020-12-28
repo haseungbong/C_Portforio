@@ -37,9 +37,9 @@ public:
 	}
 	~ItemBase();
 
-	void Display() override;
+	void Display() const override;
 
-	EquipPos GetEquipPos() { return equipPos; }
+	EquipPos GetEquipPos() const { return equipPos; }
 
 private:
 	EquipPos equipPos;
