@@ -2,8 +2,9 @@
 #include <iostream>
 #include <map>
 #include <list>
-#include "ItemBase.h"
+#include "DisplayableObject.h"
 
+class ItemBase;
 class Inventory : public DisplayableObject
 {
 private:
@@ -14,6 +15,7 @@ private:
 
 public:
 	Inventory();
+	void AddItem(const std::shared_ptr<ItemBase>& item) const;
 	void Display() const override;
 };
 

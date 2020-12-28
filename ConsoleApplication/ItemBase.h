@@ -40,6 +40,7 @@ public:
 	void Display() const override;
 
 	EquipPos GetEquipPos() const { return equipPos; }
+	int GetItemNo() const { return itemNo; }
 
 private:
 	EquipPos equipPos;
