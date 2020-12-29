@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <atomic>
-#include <map>
+#include <unordered_map>
 #include "ItemBase.h"
 #include "Singleton.h"
 
@@ -22,16 +22,24 @@ public:
 
 class IItemFactory
 {
-private:
-	virtual ItemBase::EquipPos EquipPos() = 0;
 public:
 	virtual std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) = 0;
 };
 
 class ItemWeaponFactory : public IItemFactory
 {
-private:
-	ItemBase::EquipPos EquipPos() { return ItemBase::EquipPos::Weapon; }
+public:
+	std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) override;
+};
+
+class ItemArmorFactory : public IItemFactory
+{
+public:
+	std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) override;
+};
+
+class ItemOtherFactory : public IItemFactory
+{
 public:
 	std::shared_ptr<ItemBase> Create(ItemCreateArg& arg) override;
 };
@@ -42,8 +50,9 @@ private:
 	std::atomic_int seq;
 
 	ItemBase::EquipPos GetRandomEquipPos();
-	using factoryMap = std::map<ItemBase::EquipPos, std::shared_ptr<IItemFactory>>;
+	using factoryMap = std::unordered_map<ItemBase::EquipPos, std::shared_ptr<IItemFactory>>;
 	std::shared_ptr<factoryMap> itemFactories;
+	ItemOtherFactory otherFactory;
 public:
 	ItemFactory();
 	~ItemFactory();

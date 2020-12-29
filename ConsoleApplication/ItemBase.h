@@ -10,7 +10,7 @@ public:
 		None = 0,
 		Weapon = 1,
 		Head = 2,
-		Armor = 3,
+		Chest = 3,
 		Shoes = 4,
 		Ring = 5,
 		Neck = 6,
@@ -35,7 +35,7 @@ public:
 		offensePower = offense;
 		defensePower = defense;
 	}
-	~ItemBase();
+	~ItemBase() = default;
 
 	void Display() const override;
 

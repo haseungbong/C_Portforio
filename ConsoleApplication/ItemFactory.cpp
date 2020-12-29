@@ -5,6 +5,10 @@ ItemFactory::ItemFactory()
 {
 	itemFactories = std::make_shared<factoryMap>();
 	itemFactories->insert(std::make_pair(ItemBase::EquipPos::Weapon, std::make_shared<ItemWeaponFactory>()));
+	auto armorFactory = std::make_shared<ItemArmorFactory>();
+	itemFactories->insert(std::make_pair(ItemBase::EquipPos::Head, armorFactory));
+	itemFactories->insert(std::make_pair(ItemBase::EquipPos::Chest, armorFactory));
+	itemFactories->insert(std::make_pair(ItemBase::EquipPos::Shoes, armorFactory));
 }
 
 ItemFactory::~ItemFactory()
@@ -20,7 +24,8 @@ std::shared_ptr<ItemBase> ItemFactory::Create()
 	{
 		return it->second->Create(arg);
 	}
-	return std::make_shared<ItemBase>(GetRandomEquipPos(), seq, 0, 0);
+	
+	return otherFactory.Create(arg);
 }
 
 ItemBase::EquipPos ItemFactory::GetRandomEquipPos()
@@ -34,4 +39,14 @@ ItemBase::EquipPos ItemFactory::GetRandomEquipPos()
 std::shared_ptr<ItemBase> ItemWeaponFactory::Create(ItemCreateArg& arg)
 {
 	return std::make_shared<ItemBase>(arg.GetEqupPos(), arg.GetUniqId(), 100, 0);
+}
+
+std::shared_ptr<ItemBase> ItemArmorFactory::Create(ItemCreateArg& arg)
+{
+	return std::make_shared<ItemBase>(arg.GetEqupPos(), arg.GetUniqId(), 0, 100);
+}
+
+std::shared_ptr<ItemBase> ItemOtherFactory::Create(ItemCreateArg& arg)
+{
+	return std::make_shared<ItemBase>(arg.GetEqupPos(), arg.GetUniqId(), 0, 0);
 }
