@@ -2,9 +2,9 @@
 #include <iostream>
 #include <unordered_map>
 #include <list>
+#include "ItemBase.h"
 #include "DisplayableObject.h"
 
-class ItemBase;
 class Inventory : public DisplayableObject
 {
 private:
@@ -24,5 +24,6 @@ public:
 	~Inventory() = default;
 	void AddItem(const std::shared_ptr<ItemBase>& item) const;
 	void Display() const override;
+	const ItemBase& GetBestItem(const ItemBase::EquipPos pos) const;
 };
 

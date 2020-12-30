@@ -16,3 +16,8 @@ void Unit::Display() const
 {
 	inventory->Display();
 }
+
+void Unit::AutoEquip() const
+{
+	
+}

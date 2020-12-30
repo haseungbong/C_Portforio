@@ -41,12 +41,30 @@ public:
 
 	EquipPos GetEquipPos() const { return equipPos; }
 	int GetItemNo() const { return itemNo; }
+	int GetOffensePower() const { return offensePower; }
+	int GetDefensePower() const { return defensePower; }
 
 private:
 	EquipPos equipPos;
 	int itemNo;
 	int offensePower;
 	int defensePower;
+};
+
+class WeaponEquailityComparer
+{
+public:
+	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
+		return lhs.GetOffensePower() < rhs.GetOffensePower();
+	}
+};
+
+class ArmorEquailityComparer
+{
+public:
+	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
+		return lhs.GetDefensePower() < rhs.GetDefensePower();
+	}
 };
 
 template<typename T>
