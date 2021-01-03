@@ -144,6 +144,7 @@
     <ClCompile Include="EquipSlot.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ItemBase.cpp" />
+    <ClCompile Include="ItemCreateArg.cpp" />
     <ClCompile Include="ItemFactory.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="EquipSlot.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="ItemBase.h" />
+    <ClInclude Include="ItemCreateArg.h" />
     <ClInclude Include="ItemFactory.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Unit.h" />

@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::wcout << "unit inventory sample code !\n";
 
 	auto unit = std::make_unique<Unit>();
 

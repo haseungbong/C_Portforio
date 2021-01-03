@@ -2,7 +2,7 @@
 #include "ItemBase.h"
 #include "DisplayableObject.h"
 
-template <ItemBase::EquipPos T_Pos, typename T_Comp>
+template <EquipPos T_Pos, typename T_Comp>
 class EquipSlot : public DisplayableObject
 {
 public:

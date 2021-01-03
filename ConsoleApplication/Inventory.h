@@ -1,32 +1,36 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <unordered_map>
 #include <list>
+#include <mutex>
+
 #include "ItemBase.h"
 #include "DisplayableObject.h"
 
 class IComparer;
 class Inventory : public DisplayableObject
 {
-private:
-	using itemsMap = std::unordered_map<int, std::shared_ptr<ItemBase>>;
-	std::unique_ptr<itemsMap> items;
-	using WeaponsList = std::list<std::weak_ptr<const ItemBase>>;
-	WeaponsList weapons;
-
-	std::unordered_map<ItemBase::EquipPos, std::unique_ptr<IComparer>> comparers;
-
 public:
-	//ÀÎº¥Àº À¯´Ö¿¡ Á¾¼Ó. º¹»çÀÇ ´ë»óÀÌ ¾Æ´Ô
-	Inventory(const Inventory&) = delete;
-	Inventory& operator=(const Inventory&) = delete;
-	Inventory(Inventory&&) = delete;
-	Inventory& operator=(Inventory&&) = delete;
-	
 	Inventory();
 	~Inventory() = default;
-	void AddItem(const std::shared_ptr<ItemBase> item);
+	void AddItem(std::shared_ptr<ItemBase> const& item);
 	void Display() const override;
-	std::shared_ptr<const ItemBase> GetBestItem(const ItemBase::EquipPos pos) const;
-};
+	std::shared_ptr<ItemBase const> GetBestItem(EquipPos const pos) const;
 
+	//ì¸ë²¤ì€ ìœ ë‹›ì— ì¢…ì†. ë³µì‚¬ì˜ ëŒ€ìƒì´ ì•„ë‹˜
+	Inventory(Inventory const&) = delete;
+	Inventory& operator=(Inventory const&) = delete;
+	Inventory(Inventory&&) = delete;
+	Inventory& operator=(Inventory&&) = delete;
+
+private:
+
+	using itemsMap = std::unordered_map<int, std::shared_ptr<ItemBase>>;
+	using WeaponsList = std::list<std::weak_ptr<ItemBase const >>;
+
+	std::unique_ptr<itemsMap> items;
+	WeaponsList weapons;
+	std::unordered_map<EquipPos, std::unique_ptr<IComparer>> comparers;
+
+	std::mutex invenMutex;
+};

@@ -7,8 +7,8 @@
 Unit::Unit()
 {
 	inventory = std::make_unique<Inventory>();
-	//std::make_integer_sequence<std::size_t, ItemBase::EquipPos
-	auto a = std::make_index_sequence<static_cast<typename std::underlying_type_t<ItemBase::EquipPos>>(ItemBase::EquipPos::Max)>();
+	//std::make_integer_sequence<std::size_t, EquipPos
+	auto a = std::make_index_sequence<static_cast<typename std::underlying_type_t<EquipPos>>(EquipPos::Max)>();
 	
 }
 
@@ -24,7 +24,7 @@ void Unit::Display() const
 
 void Unit::AutoEquip() const
 {
-	auto bestWeapon = inventory->GetBestItem(ItemBase::EquipPos::Weapon);
+	auto const bestWeapon = inventory->GetBestItem(EquipPos::Weapon);
 	std::cout << "BestWeapon : ";
 	if (bestWeapon != nullptr)
 	{		

@@ -4,13 +4,14 @@
 class IComparer
 {
 public:
-	virtual bool Compare(const ItemBase& lhs, const ItemBase& rhs) const = 0;
+	virtual bool Compare(ItemBase const& lhs, ItemBase const& rhs) const = 0;
 };
 
 class WeaponEquailityComparer : public IComparer
 {
 public:
-	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
+	bool Compare(ItemBase const& lhs, ItemBase const& rhs) const
+	{
 		return lhs.GetOffensePower() < rhs.GetOffensePower();
 	}
 };
@@ -18,7 +19,8 @@ public:
 class ArmorEquailityComparer : public IComparer
 {
 public:
-	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
+	bool Compare(ItemBase const& lhs, ItemBase const& rhs) const
+	{
 		return lhs.GetDefensePower() < rhs.GetDefensePower();
 	}
 };
@@ -26,7 +28,8 @@ public:
 class OtherEquailityComparer : public IComparer
 {
 public:
-	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
+	bool Compare(ItemBase const& lhs, ItemBase const& rhs) const
+	{
 		return lhs.GetDefensePower() + lhs.GetOffensePower() <
 			rhs.GetDefensePower() + rhs.GetOffensePower();
 	}
