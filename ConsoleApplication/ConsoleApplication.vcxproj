@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="ConsoleApplication.cpp" />
     <ClCompile Include="DisplayableObject.cpp" />
+    <ClCompile Include="EquipSlot.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="ItemFactory.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="DisplayableObject.h" />
     <ClInclude Include="EquailityComparers.h" />
+    <ClInclude Include="EquipSlot.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="ItemFactory.h" />

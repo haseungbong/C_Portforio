@@ -32,7 +32,7 @@ ItemBase::EquipPos ItemFactory::GetRandomEquipPos()
 {
 	static std::random_device randomDevice;
 	static std::mt19937 rnd(randomDevice());
-	static std::uniform_int_distribution<int> dist(static_cast<int>(ItemBase::EquipPos::Weapon), static_cast<int>(ItemBase::EquipPos::Max) - 1);
+	static std::uniform_int_distribution<int> dist(static_cast<int>(ItemBase::EquipPos::First), static_cast<int>(ItemBase::EquipPos::Max) - 1);
 	return static_cast<ItemBase::EquipPos>(dist(rnd));
 }
 
