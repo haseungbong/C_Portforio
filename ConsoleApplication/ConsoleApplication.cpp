@@ -20,4 +20,5 @@ int main()
 		});
 	
 	unit->Display();
+	unit->AutoEquip();
 }

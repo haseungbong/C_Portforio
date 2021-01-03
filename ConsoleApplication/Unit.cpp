@@ -19,5 +19,10 @@ void Unit::Display() const
 
 void Unit::AutoEquip() const
 {
-	
+	auto bestWeapon = inventory->GetBestItem(ItemBase::EquipPos::Weapon);
+	if (bestWeapon != nullptr)
+	{
+		std::cout << "BestWeapon : ";
+		bestWeapon->Display();
+	}
 }

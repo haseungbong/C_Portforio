@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DisplayableObject.h" />
+    <ClInclude Include="EquailityComparers.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="ItemFactory.h" />

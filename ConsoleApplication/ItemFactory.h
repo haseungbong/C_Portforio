@@ -53,6 +53,7 @@ private:
 	using factoryMap = std::unordered_map<ItemBase::EquipPos, std::shared_ptr<IItemFactory>>;
 	std::shared_ptr<factoryMap> itemFactories;
 	ItemOtherFactory otherFactory;
+
 public:
 	ItemFactory();
 	~ItemFactory();

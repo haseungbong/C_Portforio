@@ -38,7 +38,10 @@ ItemBase::EquipPos ItemFactory::GetRandomEquipPos()
 
 std::shared_ptr<ItemBase> ItemWeaponFactory::Create(ItemCreateArg& arg)
 {
-	return std::make_shared<ItemBase>(arg.GetEqupPos(), arg.GetUniqId(), 100, 0);
+	static std::random_device randomDevice;
+	static std::mt19937 rnd(randomDevice());
+	static std::uniform_int_distribution<int> dist(100, 999);
+	return std::make_shared<ItemBase>(arg.GetEqupPos(), arg.GetUniqId(), dist(rnd), 0);
 }
 
 std::shared_ptr<ItemBase> ItemArmorFactory::Create(ItemCreateArg& arg)

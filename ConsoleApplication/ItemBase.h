@@ -51,22 +51,6 @@ private:
 	int defensePower;
 };
 
-class WeaponEquailityComparer
-{
-public:
-	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
-		return lhs.GetOffensePower() < rhs.GetOffensePower();
-	}
-};
-
-class ArmorEquailityComparer
-{
-public:
-	bool Compare(const ItemBase& lhs, const ItemBase& rhs) const {
-		return lhs.GetDefensePower() < rhs.GetDefensePower();
-	}
-};
-
 template<typename T>
 std::ostream& operator<<(typename std::enable_if<std::is_enum<T>::value, std::ostream>::type& stream, const T& e)
 {
