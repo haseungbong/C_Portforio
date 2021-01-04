@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <list>
 #include <mutex>
-
+#include "concurrent_unordered_map.h"
 #include "ItemBase.h"
 #include "DisplayableObject.h"
 
@@ -25,7 +25,7 @@ public:
 
 private:
 
-	using itemsMap = std::unordered_map<int, std::shared_ptr<ItemBase>>;
+	using itemsMap = Concurrency::concurrent_unordered_map<int, std::shared_ptr<ItemBase>>;
 	using WeaponsList = std::list<std::weak_ptr<ItemBase const >>;
 
 	std::unique_ptr<itemsMap> items;

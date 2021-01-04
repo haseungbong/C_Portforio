@@ -39,7 +39,7 @@ public:
 	int GetDefensePower() const { return defensePower; }
 
 private:
-	friend std::ostream& operator<<(std::ostream& os, ItemBase const& dt);
+	friend std::wostream& operator<<(std::wostream& os, ItemBase const& dt);
 
 	EquipPos equipPos;
 	int itemNo;
